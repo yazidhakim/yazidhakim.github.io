@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Yazid Hakim — Data Analyst & Data Scientist</title>
+<meta name="description" content="Portofolio Muhammad Yazid Hakim — Data Analyst, Data Science, Business Intelligence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #10151b;
+    --panel: #171e26;
+    --panel-2: #1d2530;
+    --line: #2a3340;
+    --ink: #eae6da;
+    --ink-dim: #97a1ad;
+    --amber: #e8a33d;
+    --amber-dim: #7a6335;
+    --teal: #5fb3a1;
+    --radius: 3px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  ::selection{ background: var(--amber); color: #10151b; }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(16,21,27,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .nav-mark{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--amber);
+    letter-spacing: 0.02em;
+  }
+  .nav-links{
+    display:flex;
+    gap: 28px;
+    list-style:none;
+    margin:0; padding:0;
+    font-size: 14px;
+    color: var(--ink-dim);
+  }
+  .nav-links a{ text-decoration:none; transition: color .15s; }
+  .nav-links a:hover{ color: var(--ink); }
+  .nav-toggle{ display:none; }
+
+  @media (max-width: 720px){
+    .nav-links{ display:none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 96px 0 72px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns: 1fr; }
+  }
+
+  .eyebrow-role{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--teal);
+    display:flex;
+    gap: 10px;
+    align-items:center;
+    margin-bottom: 22px;
+  }
+  .eyebrow-role .dot{
+    width:7px; height:7px; border-radius:50%;
+    background: var(--teal);
+    box-shadow: 0 0 0 3px rgba(95,179,161,0.15);
+  }
+
+  h1.name{
+    font-family:'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(2.6rem, 5.4vw, 4.1rem);
+    line-height: 1.04;
+    margin: 0 0 22px;
+    letter-spacing: -0.01em;
+  }
+  h1.name em{
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber);
+  }
+
+  .hero p.lead{
+    font-size: 17px;
+    color: var(--ink-dim);
+    max-width: 46ch;
+    margin: 0 0 34px;
+  }
+
+  .hero-cta{
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration:none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform .12s ease, border-color .12s ease, background .12s ease;
+  }
+  .btn-primary{
+    background: var(--amber);
+    color: #171009;
+  }
+  .btn-primary:hover{ transform: translateY(-1px); }
+  .btn-ghost{
+    border-color: var(--line);
+    color: var(--ink);
+  }
+  .btn-ghost:hover{ border-color: var(--ink-dim); }
+
+  /* Live chart visual */
+  .chart-card{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 22px 22px 16px;
+  }
+  .chart-card-head{
+    display:flex;
+    justify-content: space-between;
+    align-items:baseline;
+    margin-bottom: 14px;
+  }
+  .chart-title{
+    font-size: 13px;
+    color: var(--ink-dim);
+  }
+  .chart-value{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 22px;
+    color: var(--amber);
+  }
+  svg.chart{ width: 100%; height: 140px; display:block; }
+  .chart-line{
+    fill:none;
+    stroke: var(--amber);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 620;
+    stroke-dashoffset: 620;
+    animation: draw 2.2s ease forwards .3s;
+  }
+  .chart-area{
+    fill: url(#areaFill);
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 1.6s;
+  }
+  @keyframes draw{ to{ stroke-dashoffset: 0; } }
+  @keyframes fadeIn{ to{ opacity: 1; } }
+
+  .chart-foot{
+    display:flex;
+    justify-content: space-between;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-dim);
+    margin-top: 6px;
+  }
+
+  .kpi-row{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1px;
+    background: var(--line);
+    margin-top: 16px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .kpi{
+    background: var(--panel-2);
+    padding: 12px 14px;
+  }
+  .kpi .n{
+    font-family:'JetBrains Mono', monospace;
+    color: var(--teal);
+    font-size: 16px;
+  }
+  .kpi .l{
+    font-size: 11px;
+    color: var(--ink-dim);
+    margin-top: 2px;
+  }
+
+  /* ---------- Section shell ---------- */
+  section{ padding: 88px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom: none; }
+
+  .section-head{
+    display:flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 44px;
+  }
+  .section-index{
+    font-family:'JetBrains Mono', monospace;
+    color: var(--amber-dim);
+    font-size: 13px;
+  }
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    margin: 0;
+  }
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: 56px;
+  }
+  @media (max-width: 860px){ .about-grid{ grid-template-columns: 1fr; } }
+
+  .about-grid p{ color: var(--ink-dim); font-size: 16px; margin: 0 0 16px; }
+  .about-grid p strong{ color: var(--ink); font-weight: 500; }
+
+  .stat-stack{ display:flex; flex-direction:column; gap: 1px; background: var(--line); border-radius: 4px; overflow:hidden; }
+  .stat-item{ background: var(--panel); padding: 20px 22px; display:flex; justify-content:space-between; align-items:center; }
+  .stat-item .num{ font-family:'JetBrains Mono', monospace; font-size: 28px; color: var(--amber); }
+  .stat-item .label{ font-size: 13px; color: var(--ink-dim); text-align: right; }
+
+  /* ---------- Timeline (education + experience) ---------- */
+  .tl{
+    position: relative;
+    padding-left: 28px;
+    border-left: 1px solid var(--line);
+  }
+  .tl-item{
+    position: relative;
+    padding-bottom: 34px;
+  }
+  .tl-item:last-child{ padding-bottom: 0; }
+  .tl-item::before{
+    content:'';
+    position:absolute;
+    left: -33px;
+    top: 4px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--amber);
+  }
+  .tl-date{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--teal);
+    margin-bottom: 6px;
+    display:block;
+  }
+  .tl-item h3{
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+  .tl-item p{
+    margin: 0;
+    color: var(--ink-dim);
+    font-size: 14.5px;
+    max-width: 62ch;
+  }
+  .tl-note{
+    margin-top: 20px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--amber);
+    padding: 16px 20px;
+    border-radius: 3px;
+  }
+  .tl-note .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--amber);
+    margin-bottom: 6px;
+    display:block;
+  }
+  .tl-note h4{ margin: 0 0 4px; font-size: 15px; }
+  .tl-note p{ margin:0; color: var(--ink-dim); font-size: 14px; }
+
+  /* ---------- Skills ---------- */
+  .skill-block{ margin-bottom: 36px; }
+  .skill-block:last-child{ margin-bottom: 0; }
+  .skill-kicker{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-dim);
+    margin-bottom: 16px;
+  }
+  .chip-row{ display:flex; flex-wrap:wrap; gap: 10px; }
+  .chip{
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-size: 13.5px;
+    color: var(--ink);
+  }
+  .chip.filled{
+    background: transparent;
+    border-color: var(--amber-dim);
+    color: var(--amber);
+  }
+
+  /* ---------- Projects ---------- */
+  .proj-feature{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    background: var(--panel);
+  }
+  @media (max-width: 780px){ .proj-feature{ grid-template-columns: 1fr; } }
+
+  .proj-copy{ padding: 32px; display:flex; flex-direction:column; justify-content:center; }
+  .proj-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+  }
+  .proj-copy h3{ font-size: 20px; margin: 0 0 12px; font-weight: 600; }
+  .proj-copy p{ color: var(--ink-dim); font-size: 14.5px; margin: 0 0 18px; }
+  .proj-link{
+    font-size: 13.5px;
+    color: var(--amber);
+    text-decoration: none;
+    display:inline-flex;
+    align-items:center;
+    gap: 6px;
+    width: fit-content;
+    border-bottom: 1px solid var(--amber-dim);
+    padding-bottom: 2px;
+  }
+
+  .proj-visual{
+    background:
+      linear-gradient(var(--panel-2), var(--panel-2)),
+      repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(255,255,255,0.035) 28px),
+      repeating-linear-gradient(90deg, transparent, transparent 27px, rgba(255,255,255,0.035) 28px);
+    position: relative;
+    min-height: 220px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 24px;
+  }
+  .proj-visual svg{ width:100%; height:auto; max-height: 180px; }
+
+  .proj-small-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 720px){ .proj-small-grid{ grid-template-columns: 1fr; } }
+  .proj-small{
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 24px;
+    background: var(--panel);
+  }
+  .proj-small .proj-tag{ color: var(--amber); }
+  .proj-small h3{ font-size: 16.5px; margin: 0 0 10px; font-weight: 600; }
+  .proj-small p{ color: var(--ink-dim); font-size: 14px; margin: 0 0 14px; }
+  .proj-small .bullets{ margin: 0 0 16px; padding-left: 18px; color: var(--ink-dim); font-size: 13.5px; }
+  .proj-small .bullets li{ margin-bottom: 4px; }
+
+  .subsection-title{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-dim);
+    margin: 48px 0 20px;
+    padding-top: 8px;
+  }
+
+  .repo-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  @media (max-width: 860px){ .repo-grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 560px){ .repo-grid{ grid-template-columns: 1fr; } }
+  .repo{
+    background: var(--panel);
+    padding: 22px;
+  }
+  .repo .lang{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+    display:block;
+  }
+  .repo h4{ font-size: 14.5px; margin: 0 0 8px; font-weight: 600; }
+  .repo p{ font-size: 13px; color: var(--ink-dim); margin: 0 0 14px; }
+  .repo .date{ font-family:'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-dim); opacity: .8; }
+
+  /* ---------- Contact ---------- */
+  .contact-wrap{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  @media (max-width: 780px){ .contact-wrap{ grid-template-columns: 1fr; } }
+
+  .contact-lead p{ color: var(--ink-dim); font-size: 16px; max-width: 40ch; }
+  .status-pill{
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--teal);
+    border: 1px solid var(--amber-dim);
+    padding: 7px 14px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+  }
+  .status-pill .dot{ width:6px;height:6px;border-radius:50%; background: var(--teal); }
+
+  .contact-list{ list-style:none; margin:0; padding:0; }
+  .contact-list li{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-list li:first-child{ border-top: 1px solid var(--line); }
+  .contact-list .k{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .contact-list a{
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: color .15s;
+  }
+  .contact-list a:hover{ color: var(--amber); }
+
+  footer{
+    padding: 32px 0;
+    display:flex;
+    justify-content: space-between;
+    font-size: 12.5px;
+    color: var(--ink-dim);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <span class="nav-mark">MYH / portofolio</span>
+    <ul class="nav-links">
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#education">Pendidikan</a></li>
+      <li><a href="#experience">Pengalaman</a></li>
+      <li><a href="#skills">Skill</a></li>
+      <li><a href="#projects">Proyek</a></li>
+      <li><a href="#contact">Kontak</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow-role"><span class="dot"></span>Data Analyst · Data Science · Business Intelligence</div>
+      <h1 class="name">Muhammad Yazid<br><em>Hakim</em></h1>
+      <p class="lead">Lulusan Data Science yang mengubah data mentah menjadi dashboard interaktif dan solusi machine learning yang mendukung keputusan bisnis nyata.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">Lihat proyek</a>
+        <a href="#contact" class="btn btn-ghost">Hubungi saya</a>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card-head">
+        <span class="chart-title">Portfolio growth — proyek & pengalaman</span>
+        <span class="chart-value">17+</span>
+      </div>
+      <svg class="chart" viewBox="0 0 400 140" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e8a33d" stop-opacity="0.28"/>
+            <stop offset="100%" stop-color="#e8a33d" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path class="chart-area" d="M0,110 L40,95 L80,118 L120,80 L160,100 L200,60 L240,75 L280,40 L320,55 L360,20 L400,32 L400,140 L0,140 Z"/>
+        <path class="chart-line" d="M0,110 L40,95 L80,118 L120,80 L160,100 L200,60 L240,75 L280,40 L320,55 L360,20 L400,32"/>
+      </svg>
+      <div class="chart-foot"><span>2022</span><span>2024</span><span>2026</span></div>
+      <div class="kpi-row">
+        <div class="kpi"><div class="n">3.68</div><div class="l">GPA</div></div>
+        <div class="kpi"><div class="n">12+</div><div class="l">GitHub Projects</div></div>
+        <div class="kpi"><div class="n">5</div><div class="l">Internship & Org</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head"><span class="section-index">01</span><h2>Tentang saya</h2></div>
+    <div class="about-grid">
+      <div>
+        <p>Saya lulusan Data Science yang sangat tertarik pada <strong>Data Analytics, Data Science, dan Statistik</strong> — khususnya dalam menggali insight yang mendukung keputusan strategis.</p>
+        <p>Saya terbiasa menganalisis data dan membangun dashboard interaktif, dengan fokus pada penyampaian insight yang akurat dan relevan dengan kebutuhan bisnis. Melalui magang dan pengalaman organisasi, saya terus belajar untuk menjembatani data dan strategi menjadi solusi nyata.</p>
+      </div>
+      <div class="stat-stack">
+        <div class="stat-item"><span class="num">3.68</span><span class="label">Final GPA<br>Telkom University</span></div>
+        <div class="stat-item"><span class="num">12+</span><span class="label">Repository publik<br>di GitHub</span></div>
+        <div class="stat-item"><span class="num">5</span><span class="label">Pengalaman magang<br>& organisasi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head"><span class="section-index">02</span><h2>Pendidikan</h2></div>
+
+    <div class="tl">
+      <div class="tl-item">
+        <span class="tl-date">2022 — 2026</span>
+        <h3>Telkom University</h3>
+        <p>Bachelor of Data Science · GPA 3.68 (Lulus)</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">2019 — 2022</span>
+        <h3>SMA Muhammadiyah 1 Taman</h3>
+        <p>Nilai akhir 88,17</p>
+      </div>
+    </div>
+
+    <div class="tl-note">
+      <span class="tag">COURSE / BOOTCAMP · Jul — Nov 2025</span>
+      <h4>Dicoding Bootcamp — Machine Learning Engineer</h4>
+      <p>Pelatihan intensif membangun dan men-deploy model machine learning dari data mentah hingga produksi.</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head"><span class="section-index">03</span><h2>Pengalaman</h2></div>
+
+    <div class="tl">
+      <div class="tl-item">
+        <span class="tl-date">Sep 2025 — Jan 2026</span>
+        <h3>Business Intelligence Intern — Direktorat Keuangan Telkom University</h3>
+        <p>Menyusun dan mendukung pelaporan berbasis data untuk kebutuhan keuangan universitas.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">Jul 2025 — Agu 2025</span>
+        <h3>Data Analyst & Visualization Intern — PLN UP3 Bandung</h3>
+        <p>Menganalisis dan memvisualisasikan data operasional untuk mendukung pengambilan keputusan.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">Feb 2024 — Mar 2025</span>
+        <h3>Staff Public Relation & Community Service — HIMADS Telkom</h3>
+        <p>Mengelola relasi publik dan kegiatan layanan komunitas himpunan mahasiswa.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">Mei 2024 — Jun 2024</span>
+        <h3>Event Staff — RISE</h3>
+        <p>Mendukung operasional dan pelaksanaan acara.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">Okt 2023 — Jan 2024</span>
+        <h3>AIESEC Future Leader — Winter Peak</h3>
+        <p>Program pengembangan kepemimpinan bersama AIESEC.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head"><span class="section-index">04</span><h2>Skill & software</h2></div>
+
+    <div class="skill-block">
+      <div class="skill-kicker">Hard skills</div>
+      <div class="chip-row">
+        <span class="chip filled">Python</span>
+        <span class="chip filled">MySQL</span>
+        <span class="chip filled">Tableau</span>
+        <span class="chip filled">Power BI</span>
+        <span class="chip filled">Looker Studio</span>
+        <span class="chip filled">PHP Laravel</span>
+        <span class="chip filled">Java</span>
+        <span class="chip filled">Figma</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-kicker">Soft skills</div>
+      <div class="chip-row">
+        <span class="chip">Time Management</span>
+        <span class="chip">Leadership</span>
+        <span class="chip">Collaborative</span>
+        <span class="chip">Adaptive</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head"><span class="section-index">05</span><h2>Proyek pilihan</h2></div>
+
+    <!-- Featured: Sales dashboard -->
+    <div class="proj-feature">
+      <div class="proj-copy">
+        <span class="proj-tag">DATA VISUALIZATION · LOOKER STUDIO</span>
+        <h3>Sales Performance Dashboard</h3>
+        <p>Dashboard interaktif berbasis data retail nyata, menampilkan tren penjualan year-over-year, segmentasi pelanggan, dan distribusi geografis untuk mendukung pengambilan keputusan bisnis.</p>
+        <a class="proj-link" href="#" onclick="return false;">Lihat live report ↗</a>
+      </div>
+      <div class="proj-visual">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="90" width="30" height="55" fill="#5fb3a1"/>
+          <rect x="55" y="60" width="30" height="85" fill="#e8a33d"/>
+          <rect x="100" y="105" width="30" height="40" fill="#5fb3a1"/>
+          <polyline points="150,120 175,80 200,95 225,40 250,60 275,25" fill="none" stroke="#e8a33d" stroke-width="2.5"/>
+          <circle cx="275" cy="25" r="3.5" fill="#e8a33d"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Featured: Earthquake dashboard -->
+    <div class="proj-feature">
+      <div class="proj-copy">
+        <span class="proj-tag">DATA VISUALIZATION · LOOKER STUDIO</span>
+        <h3>Earthquake Visualization Dashboard</h3>
+        <p>Dashboard interaktif dari data seismik global, menyoroti distribusi gempa, tren historis, dan wilayah terdampak untuk mendukung pemantauan bencana.</p>
+        <a class="proj-link" href="#" onclick="return false;">Lihat live report ↗</a>
+      </div>
+      <div class="proj-visual">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="150" cy="80" r="6" fill="#e8a33d"/>
+          <circle cx="150" cy="80" r="18" fill="none" stroke="#e8a33d" stroke-opacity="0.5" stroke-width="1.5"/>
+          <circle cx="150" cy="80" r="34" fill="none" stroke="#e8a33d" stroke-opacity="0.3" stroke-width="1.5"/>
+          <circle cx="150" cy="80" r="50" fill="none" stroke="#e8a33d" stroke-opacity="0.15" stroke-width="1.5"/>
+          <circle cx="90" cy="50" r="3" fill="#5fb3a1"/>
+          <circle cx="210" cy="115" r="3" fill="#5fb3a1"/>
+          <circle cx="70" cy="120" r="3" fill="#5fb3a1"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Featured: Napoleon Tableau -->
+    <div class="proj-feature">
+      <div class="proj-copy">
+        <span class="proj-tag">DATA VISUALIZATION · TABLEAU</span>
+        <h3>Napoleon's Ill-Fated March on Moscow</h3>
+        <p>Visualisasi data historis dari marsnya Napoleon tahun 1812, memetakan rute melalui Lithuania, Belarus, dan Rusia modern — menggabungkan rute, penanda kota, dan data suhu ke dalam satu narasi visual.</p>
+      </div>
+      <div class="proj-visual">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="20,60 80,110 140,55 200,95 280,35" fill="none" stroke="#e8a33d" stroke-width="2"/>
+          <circle cx="20" cy="60" r="4" fill="#5fb3a1"/>
+          <circle cx="80" cy="110" r="3" fill="#eae6da"/>
+          <circle cx="140" cy="55" r="3" fill="#eae6da"/>
+          <circle cx="200" cy="95" r="3" fill="#eae6da"/>
+          <circle cx="280" cy="35" r="4" fill="#e8a33d"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="subsection-title">Machine learning & NLP</div>
+    <div class="proj-small-grid">
+      <div class="proj-small">
+        <span class="proj-tag">FINAL THESIS · Jupyter Notebook, IndoBERT, NLP</span>
+        <h3>Aspect-Based Sentiment Analysis on PLN Mobile Reviews using IndoBERT</h3>
+        <p>Menganalisis ulasan pelanggan PLN Mobile pada level aspek menggunakan model transformer IndoBERT, menghasilkan insight yang lebih granular dibanding sentiment scoring umum.</p>
+        <a class="proj-link" href="https://github.com/yazidhakim/Analisis-Sentimen-Aspek-PLN-Mobile" target="_blank" rel="noopener">github.com/yazidhakim/Analisis-Sentimen-Aspek-PLN-Mobile ↗</a>
+      </div>
+      <div class="proj-small">
+        <span class="proj-tag">ML CLASSIFICATION</span>
+        <h3>Predicting Marketing Campaign Effectiveness</h3>
+        <p>Memprediksi efektivitas kampanye marketing dari data historis menggunakan ROI sebagai target metrik.</p>
+        <ul class="bullets">
+          <li>ROI ≥ 1.5 → Efficient</li>
+          <li>ROI &lt; 1.5 → Not Efficient</li>
+        </ul>
+        <a class="proj-link" href="https://github.com/yazidhakim/predicting-campaign" target="_blank" rel="noopener">github.com/yazidhakim/predicting-campaign ↗</a>
+      </div>
+    </div>
+
+    <div class="subsection-title">Repository GitHub lainnya</div>
+    <div class="repo-grid">
+      <div class="repo">
+        <span class="lang">Python</span>
+        <h4>Sleep Productivity Prediction App</h4>
+        <p>Model regresi yang di-deploy sebagai REST API FastAPI untuk memprediksi produktivitas dari durasi tidur, kualitas tidur, dan tingkat stres.</p>
+        <span class="date">Jul — Nov 2025</span>
+      </div>
+      <div class="repo">
+        <span class="lang">Notebook</span>
+        <h4>corn-leaf-disease-detection</h4>
+        <p>Prediksi penyakit daun jagung secara instan dengan model MobileNetV2 hasil fine-tuning yang berjalan di TensorFlow.js.</p>
+        <span class="date">Okt 2025</span>
+      </div>
+      <div class="repo">
+        <span class="lang">Notebook</span>
+        <h4>leaf-disease-classification</h4>
+        <p>Pipeline deep-learning CNN untuk klasifikasi penyakit daun tanaman, dari persiapan data hingga ekspor deployment.</p>
+        <span class="date">Okt 2025</span>
+      </div>
+      <div class="repo">
+        <span class="lang">Notebook</span>
+        <h4>sentiment-analysis-review-tokopedia</h4>
+        <p>Analisis sentimen ulasan pelanggan pada platform e-commerce Tokopedia.</p>
+        <span class="date">Sep 2025</span>
+      </div>
+      <div class="repo">
+        <span class="lang">Notebook</span>
+        <h4>clustering-classification-transaction</h4>
+        <p>Analisis clustering dan klasifikasi yang diterapkan pada data transaksi pelanggan.</p>
+        <span class="date">Sep 2025</span>
+      </div>
+      <div class="repo">
+        <span class="lang">Notebook</span>
+        <h4>forecasting-income-ev-charging</h4>
+        <p>Model forecasting pendapatan untuk stasiun pengisian kendaraan listrik (EV).</p>
+        <span class="date">Agu 2025</span>
+      </div>
+      <div class="repo">
+        <span class="lang">Laravel</span>
+        <h4>webtiket</h4>
+        <p>Aplikasi pemesanan tiket berbasis web yang dibangun dengan framework Laravel.</p>
+        <span class="date">Jul 2025</span>
+      </div>
+      <div class="repo">
+        <span class="lang">JavaScript</span>
+        <h4>portofolio</h4>
+        <p>Situs portofolio pribadi yang menampilkan proyek dan profil.</p>
+        <span class="date">Jul 2025</span>
+      </div>
+      <div class="repo">
+        <span class="lang">Java</span>
+        <h4>aplikasi_bus (BussGo)</h4>
+        <p>Aplikasi pemesanan & manajemen tiket bus dengan pencarian rute, jadwal, dan harga secara real-time.</p>
+        <span class="date">Des 2024</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-wrap">
+    <div class="contact-lead">
+      <span class="status-pill"><span class="dot"></span>Terbuka untuk peluang baru</span>
+      <h2 style="margin-bottom:14px;">Mari terhubung</h2>
+      <p>Terbuka untuk peluang sebagai Data Analyst, Data Scientist, maupun Business Intelligence.</p>
+    </div>
+    <ul class="contact-list">
+      <li><span class="k">Phone</span><a href="tel:+6285173203952">+62 851-7320-3952</a></li>
+      <li><span class="k">Email</span><a href="mailto:yazhaofficial@gmail.com">yazhaofficial@gmail.com</a></li>
+      <li><span class="k">LinkedIn</span><a href="https://linkedin.com/in/yazidhakim" target="_blank" rel="noopener">linkedin.com/in/yazidhakim</a></li>
+      <li><span class="k">GitHub</span><a href="https://github.com/yazidhakim" target="_blank" rel="noopener">github.com/yazidhakim</a></li>
+      <li><span class="k">Instagram</span><a href="https://instagram.com/yazha9_" target="_blank" rel="noopener">@yazha9_</a></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>© 2026 Muhammad Yazid Hakim</span>
+  <span>Dibangun dengan HTML, CSS & sedikit data.</span>
+</footer>
+
+</body>
+</html>
